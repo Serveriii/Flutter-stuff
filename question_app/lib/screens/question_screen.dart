@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:question_app/components/answer_buttons.dart';
@@ -5,9 +7,9 @@ import 'package:question_app/components/styled_text.dart';
 import 'package:question_app/data/questions.dart';
 
 class QuestionScreen extends StatefulWidget {
-  const QuestionScreen(this.answer, {super.key});
+  const QuestionScreen({super.key, required this.onSelectAnswer});
 
-  final void Function(String) answer;
+  final void Function(String answer) onSelectAnswer;
 
   @override
   State<QuestionScreen> createState() {
@@ -18,7 +20,8 @@ class QuestionScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionScreen> {
   var currentQuestionIndex = 0;
 
-  void answerQuestion() {
+  void answerQuestion(String selectedAnswer) {
+    widget.onSelectAnswer(selectedAnswer);
     setState(() {
       currentQuestionIndex++;
     });
@@ -39,7 +42,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
             StyledText(currentQuestion.text, 24, 'Lato'),
             const SizedBox(height: 30),
             ...currentQuestion.getShuffledAnswers().map((answer) {
-              return AnswerButton(text: answer, onTap: answerQuestion);
+              return AnswerButton(
+                  text: answer,
+                  onTap: () {
+                    answerQuestion(answer);
+                  });
             })
           ],
         ),
