@@ -17,7 +17,8 @@ class StartScreen extends StatelessWidget {
               color: const Color.fromARGB(150, 255, 255, 255),
             ),
             const SizedBox(height: 50),
-            const StyledText('Learn Flutter the fun way!', 26, 'Lato'),
+            const StyledText(
+                'Learn Flutter the fun way!', 26, 'Lato', Colors.white),
             const SizedBox(height: 50),
             OutlinedButton.icon(
               onPressed: () {
@@ -28,7 +29,7 @@ class StartScreen extends StatelessWidget {
                     color: Color.fromARGB(255, 222, 187, 255), width: 2),
               ),
               icon: const Icon(Icons.arrow_right_alt, color: Colors.white),
-              label: const StyledText("Start Quiz", 17, 'Roboto'),
+              label: const StyledText("Start Quiz", 17, 'Roboto', Colors.white),
             ),
           ],
         ),
