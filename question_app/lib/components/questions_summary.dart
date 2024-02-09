@@ -16,11 +16,20 @@ class QuestionsSummary extends StatelessWidget {
           (element) {
             return Row(
               children: [
-                Text(((element['question_index'] as int) + 1).toString()),
+                Container(
+                    width: 30,
+                    height: 30,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 146, 64, 223),
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Text(
+                        ((element['question_index'] as int) + 1).toString())),
                 Expanded(
                   child: Column(
                     children: [
-                      StyledText(element['question'] as String, 14, 'Lato',
+                      StyledText(element['question'] as String, 12, 'Lato',
                           Colors.white),
                       const SizedBox(height: 5),
                       StyledText(element['chosen_answer'] as String, 12, 'Lato',
